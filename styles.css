@@ -1,8 +1,33 @@
+*{
+    margin: 0;
+}
+
+.main{
+    text-align: center;
+    margin: auto auto;
+    padding:15px;
+    height: 400px;
+    width: 300px;
+    background-color: whitesmoke;
+    border-radius: 30px;
+    box-shadow: inset 5px 5px 12px #ffffff,
+                      5px 5px 12px rgba(0,0,0,.2);
+}
+
+.calculator-grid{
+    padding: 10px;
+}
+
+
 .buttons{
     display: grid;
     grid-template-columns: repeat(4,1fr);
+    height: 70px;
 }
 
+.buttons ac-del{
+    grid-column: span 2;
+}
 
 .screen{
     padding: 20px;
