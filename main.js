@@ -2,6 +2,17 @@ let prevNum = "";
 let currentNum="";
 let currentOperator ="";
 
+const sound = new Audio('bubbleShort.wav');
+sound.volume = 0.2;
+
+let allBtns = document.querySelectorAll('button');
+allBtns.forEach((btn)=>{
+    btn.addEventListener('click',()=>{
+        sound.play();
+    })  
+});
+
+
 let currentDisplayText = document.querySelector('.current-number');
 let prevDisplayText = document.querySelector('.prev-number');
 
@@ -46,8 +57,6 @@ function compute(op){
                res = Number(prevNum/currentNum)
                displayRes(Math.fround(res));
             break;
-
-
        }
 }
 
@@ -63,11 +72,6 @@ function handleOperator(operator){
     currentNum="";
     displayPrev(prevNum);
     displayCurrent(currentOperator)
-}
-
-function updateDisplay(val){
-    prevDisplayText.textContent+=val;
-    displayCurrent("");
 }
 
 
