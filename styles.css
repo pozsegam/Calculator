@@ -1,35 +1,77 @@
 *{
     margin: 0;
-}
+    font-family: Roboto;
+    color: #e5e5e5;
+    }
 
-.main{
+.container{
     text-align: center;
-    margin: auto auto;
+    margin: 100px auto;
     padding:15px;
-    height: 400px;
+    height: 500px;
     width: 300px;
-    background-color: whitesmoke;
     border-radius: 30px;
-    box-shadow: inset 5px 5px 12px #ffffff,
-                      5px 5px 12px rgba(0,0,0,.2);
+    box-shadow: 9px 9px 16px rgb(163,177,198,0.7), -9px -9px 16px
+    rgba(255,255,255,0.7);
+    background-image: linear-gradient(to right, #8360c3, #2ebf91);
 }
 
-.calculator-grid{
-    padding: 10px;
+.screen{
+    font-size: 24px;
+    text-align: right;
+    padding: 20px;
+    min-height: 60px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    border-radius: 30px;
+    margin-top:20px;
 }
 
 
 .buttons{
     display: grid;
     grid-template-columns: repeat(4,1fr);
-    height: 70px;
+    margin-top: 20px;
 }
 
-.buttons ac-del{
+.buttons button{
+    padding: 15px;
+    min-width: 20px;
+    background-color: transparent;
+    border: none;
+    border-radius: 30px;
+    margin: 10px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 18px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.buttons button:hover{
+    scale: 1.1;
+    transition:0.2s ease-in-out;
+}
+
+.buttons button:nth-child(18){
+    grid-column: span 2;
+    background-color: #5c8cac;
+    font-weight: bold;
+}
+
+.buttons button:nth-child(1){
     grid-column: span 2;
 }
-
-.screen{
-    padding: 20px;
-    background-color:gray;
+.buttons button:nth-child(3){
+    font-weight: bold;
 }
+.buttons button:nth-child(7){
+    font-weight: bold;
+}
+.buttons button:nth-child(11){
+    font-weight: bold;
+}
+.buttons button:nth-child(15){
+    font-weight: bold;
+}
+
+
+

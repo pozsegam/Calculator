@@ -1,37 +1,102 @@
-function add(num1,num2){
-    console.log( num1+num2);
+let prevNum = "";
+let currentNum="";
+let currentOperator ="";
+
+let currentDisplayText = document.querySelector('.current-number');
+let prevDisplayText = document.querySelector('.prev-number');
+
+let numberBtn = document.querySelectorAll('.number');
+numberBtn.forEach((btn) =>{
+    btn.addEventListener('click', (e)=>{
+        handleNum(e.target.textContent);
+    })
+})
+
+let operatorBtn = document.querySelectorAll('.operator')
+operatorBtn.forEach((btn) =>{
+    btn.addEventListener('click', (e)=>{
+        handleOperator(e.target.textContent);
+    })
+})
+
+let equalBtn = document.querySelector('.equal');
+equalBtn.addEventListener('click',()=>{
+    if(currentNum ==='0'){
+        displayRes("ERROR");
+        return;}
+    compute(currentOperator);
+});
+
+function compute(op){
+    let res = 0;
+       switch(op){
+            case '+':
+                res = Number(currentNum) + Number(prevNum)
+                displayRes(res);
+            break;
+            case '-':
+               res= Number(prevNum -currentNum);
+               displayRes(res)
+            break;
+            case 'x':
+               res = Number(prevNum*currentNum)
+               displayRes(res);
+            break;
+            case '÷':
+               res = Number(prevNum/currentNum)
+               displayRes(Math.fround(res));
+            break;
+
+
+       }
 }
 
-function subtract(num1,num2){
-    console.log (num1-num2);
+function displayRes(val){
+    displayCurrent(val);
+    displayPrev("")
 }
 
-function multiply(num1,num2){
-    console.log (num1*num2) ;
+
+function handleOperator(operator){
+    currentOperator = operator;
+    prevNum = currentNum;
+    currentNum="";
+    displayPrev(prevNum);
+    displayCurrent(currentOperator)
 }
 
-function divide(num1,num2){
-    console.log (num1/num2);
+function updateDisplay(val){
+    prevDisplayText.textContent+=val;
+    displayCurrent("");
 }
 
-function operate(operator, num1,num2){
-    switch(operator){
-        case '+':
-            add(num1,num2);
-        break;
-        case '-':
-            subtract(num1, num2);
-        break;
-        case 'x':
-            multiply(num1, num2);
-        break;
-        case '÷':
-            divide(num1, num2);
-        break;
+
+function handleNum(number){
+    if(currentOperator===""){
+        currentNum +=number;
+        displayCurrent(currentNum)
+        return;
     }
+    currentNum+=number;
+    displayCurrent(currentNum);
 }
 
-operate('+',5,3);
-operate('-',5,3);
-operate('÷',5,3);
-operate('x',5,3);
+function displayCurrent(val){
+    currentDisplayText.textContent = val;
+}
+
+function displayPrev(val){
+    prevDisplayText.textContent = val;
+}
+
+
+let clearBtn = document.querySelector('.clear');
+clearBtn.addEventListener('click', clear);
+
+function clear(){
+    displayCurrent("");
+    displayPrev("")
+    currentOperator ="";
+    currentNum = "";
+    prevNum="";
+}
